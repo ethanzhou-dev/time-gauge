@@ -276,7 +276,6 @@ body {
     }
 }
 
-/* Secondary Dashboards */
 .secondary-dashboards {
     display: grid;
     grid-template-columns: 1fr;

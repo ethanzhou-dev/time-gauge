@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
             lastDaysElapsed = daysElapsed;
         }
         
-        // Month calculation
         const currentMonth = now.getMonth();
         const startOfMonth = new Date(currentYear, currentMonth, 1);
         const endOfMonth = new Date(currentYear, currentMonth + 1, 1);
@@ -79,8 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthPercentageText.textContent = monthPercentage.toFixed(4) + "%";
         monthDaysText.textContent = `剩 ${monthDaysLeft} 天`;
 
-        // Week calculation (assuming week starts on Monday)
-        const dayOfWeek = now.getDay() === 0 ? 7 : now.getDay(); // 1 (Mon) to 7 (Sun)
+        const dayOfWeek = now.getDay() === 0 ? 7 : now.getDay();
         const startOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - dayOfWeek + 1);
         startOfWeek.setHours(0, 0, 0, 0);
         const weekTotalMs = 7 * msPerDay;
@@ -92,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         weekPercentageText.textContent = weekPercentage.toFixed(4) + "%";
         weekDaysText.textContent = `剩 ${weekDaysLeft} 天`;
         
-        // Day calculation
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         const dayTotalMs = msPerDay;
         const dayElapsedMs = now - startOfDay;
