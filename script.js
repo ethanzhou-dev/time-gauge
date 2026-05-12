@@ -4,6 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const daysText = document.getElementById("daysText");
     const currentYearEl = document.getElementById("currentYear");
     
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    function updateThemeIcon() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        themeIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+    }
+    
+    updateThemeIcon();
+    
+    themeToggleBtn.addEventListener('click', () => {
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon();
+    });
+
     const currentYear = new Date().getFullYear();
     if (currentYearEl) {
         currentYearEl.textContent = currentYear;

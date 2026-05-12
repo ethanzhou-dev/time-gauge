@@ -5,18 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>年度进度条</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            const storedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 </head>
 
 <body>
     <div class="dashboard">
-        <h1 class="title"><span id="currentYear"></span> 年已经过去了...</h1>
+        <div class="header">
+            <h1 class="title"><span id="currentYear"></span> 年已经过去了...</h1>
+            <button id="themeToggle" class="icon-button" aria-label="切换主题" title="切换主题">
+                <span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
+            </button>
+        </div>
 
         <div class="progress-wrapper">
             <div class="progress-track">
-                <div class="progress-fill" id="progressFill">
-                    <div class="progress-glare"></div>
-                </div>
+                <div class="progress-fill" id="progressFill"></div>
             </div>
             <div class="markers">
                 <span>0%</span>
@@ -29,10 +48,10 @@
 
         <div class="stats-panel">
             <div class="percentage-display">
-                <span id="percentageText">0.000000%</span>
+                <p id="percentageText">0.000000%</p>
             </div>
             <div class="details-display">
-                <span id="daysText">计算中...</span>
+                <p id="daysText">计算中...</p>
             </div>
         </div>
     </div>
