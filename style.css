@@ -1,0 +1,155 @@
+:root {
+    --bg-color: #d1d5db; /* 柔和的灰色背景 */
+    --panel-bg: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    --track-bg: #1f2937;
+    --text-main: #374151;
+    --text-muted: #6b7280;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 微妙的纹理背景 */
+    background: url('data:image/svg+xml;utf8,<svg width="4" height="4" viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" fill="%23d1d5db"/><circle cx="2" cy="2" r="1" fill="%23c7cbd1"/></svg>');
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+}
+
+.dashboard {
+    background: var(--panel-bg);
+    padding: 40px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 650px;
+    /* 拟物化面板的厚度和阴影 */
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.15),
+        inset 0 2px 2px rgba(255,255,255,1), /* 顶部高光 */
+        inset 0 -2px 5px rgba(0,0,0,0.05); /* 底部暗部 */
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+.title {
+    margin-top: 0;
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: var(--text-main);
+    /* 雕刻字体效果 (Letterpress) */
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.8), 0px -1px 0px rgba(0,0,0,0.2);
+}
+
+.progress-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 44px;
+    background-color: var(--track-bg);
+    border-radius: 22px;
+    /* 凹槽质感：内阴影营造深度 */
+    box-shadow: 
+        inset 0 4px 8px rgba(0,0,0,0.6),
+        inset 0 1px 2px rgba(0,0,0,0.8),
+        0 1px 0 rgba(255,255,255,0.7); /* 凹槽下边缘的高光 */
+    position: relative;
+    overflow: hidden;
+    padding: 4px; /* 让内部的填充条有一点间隙 */
+    box-sizing: border-box;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%; /* 由JS动态控制 */
+    border-radius: 18px;
+    /* 经典的拟物化玻璃质感蓝色渐变 */
+    background: linear-gradient(to bottom, #7abcff 0%, #4096ee 49%, #1e71c8 50%, #0054a3 100%);
+    position: relative;
+    /* 物理质感的阴影：内发光 + 外部投影 */
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.6), /* 顶部高光 */
+        inset 0 -1px 0 rgba(0,0,0,0.3),    /* 底部暗部 */
+        2px 0 5px rgba(0,0,0,0.4);         /* 右侧投影，显得有厚度 */
+    transition: width 0.1s linear;
+}
+
+/* 进度条上半部分的玻璃反光 */
+.progress-glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
+    border-radius: 18px 18px 0 0;
+    pointer-events: none;
+}
+
+/* 进度条下方的刻度线 */
+.markers {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-muted);
+    /* 刻度文字的雕刻效果 */
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.8);
+    position: relative;
+}
+
+/* 刻度小短线 */
+.markers::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    right: 10px;
+    height: 4px;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(0,0,0,0.1) 0,
+        rgba(0,0,0,0.1) 2px,
+        transparent 2px,
+        transparent calc(25% - 0.5px) /* 25%为一个间隔 */
+    );
+    border-bottom: 1px solid rgba(255,255,255,0.6); /* 短线高光 */
+}
+
+
+.stats-panel {
+    background: #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 1px 0 rgba(255,255,255,0.8);
+    border: 1px solid #d1d5db;
+}
+
+.percentage-display {
+    margin-bottom: 10px;
+}
+
+#percentageText {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111827;
+    font-variant-numeric: tabular-nums; /* 让数字等宽，跳动时不会晃动 */
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.9), 0px -1px 0px rgba(0,0,0,0.1);
+}
+
+.details-display {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4b5563;
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+}
