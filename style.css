@@ -283,3 +283,22 @@ md-icon-button {
     margin: 0;
     transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--md-sys-color-background);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s cubic-bezier(0.2, 0, 0, 1), visibility 0.5s cubic-bezier(0.2, 0, 0, 1);
+}
+
+#loadingOverlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}

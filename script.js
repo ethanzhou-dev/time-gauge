@@ -105,3 +105,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(updateProgress);
 });
+
+window.addEventListener('load', () => {
+    Promise.all([
+        customElements.whenDefined('md-linear-progress'),
+        customElements.whenDefined('md-circular-progress'),
+        customElements.whenDefined('md-icon-button')
+    ]).then(() => {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                if (loadingOverlay.parentNode) {
+                    loadingOverlay.parentNode.removeChild(loadingOverlay);
+                }
+            }, 500);
+        }
+    });
+});
