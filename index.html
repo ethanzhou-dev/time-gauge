@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "@material/web/": "https://esm.run/@material/web/"
+            }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+    </script>
     <script>
         (function () {
             const storedTheme = localStorage.getItem('theme');
@@ -29,15 +39,13 @@
     <div class="dashboard">
         <div class="header">
             <h1 class="title"><span id="currentYear"></span> 年已经过去了...</h1>
-            <button id="themeToggle" class="icon-button" aria-label="切换主题" title="切换主题">
-                <span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
-            </button>
+            <md-icon-button id="themeToggle" aria-label="切换主题" title="切换主题">
+                <md-icon id="themeIcon">dark_mode</md-icon>
+            </md-icon-button>
         </div>
 
         <div class="progress-wrapper">
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+            <md-linear-progress id="progressFill" class="progress-track" value="0"></md-linear-progress>
             <div class="markers">
                 <span>0%</span>
                 <span>25%</span>
@@ -62,9 +70,7 @@
                     <h2 class="mini-title">本月</h2>
                     <span class="mini-percentage" id="monthPercentageText">0%</span>
                 </div>
-                <div class="mini-progress-track">
-                    <div class="mini-progress-fill" id="monthProgressFill"></div>
-                </div>
+                <md-linear-progress id="monthProgressFill" class="mini-progress-track" value="0"></md-linear-progress>
                 <p class="mini-details" id="monthDaysText">计算中...</p>
             </div>
 
@@ -73,9 +79,7 @@
                     <h2 class="mini-title">本周</h2>
                     <span class="mini-percentage" id="weekPercentageText">0%</span>
                 </div>
-                <div class="mini-progress-track">
-                    <div class="mini-progress-fill" id="weekProgressFill"></div>
-                </div>
+                <md-linear-progress id="weekProgressFill" class="mini-progress-track" value="0"></md-linear-progress>
                 <p class="mini-details" id="weekDaysText">计算中...</p>
             </div>
 
@@ -84,9 +88,7 @@
                     <h2 class="mini-title">今日</h2>
                     <span class="mini-percentage" id="dayPercentageText">0%</span>
                 </div>
-                <div class="mini-progress-track">
-                    <div class="mini-progress-fill" id="dayProgressFill"></div>
-                </div>
+                <md-linear-progress id="dayProgressFill" class="mini-progress-track" value="0"></md-linear-progress>
                 <p class="mini-details" id="dayHoursText">计算中...</p>
             </div>
         </div>

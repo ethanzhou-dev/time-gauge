@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const elapsedMs = now - startOfYear;
         const percentage = (elapsedMs / totalMs) * 100;
         
-        progressFill.style.width = Math.min(percentage, 100) + "%";
+        progressFill.value = Math.min(percentage / 100, 1);
         
         percentageText.textContent = percentage.toFixed(6) + "%"; 
         
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const monthDaysElapsed = Math.floor(monthElapsedMs / msPerDay);
         const monthDaysLeft = monthDaysTotal - monthDaysElapsed;
         
-        monthProgressFill.style.width = Math.min(monthPercentage, 100) + "%";
+        monthProgressFill.value = Math.min(monthPercentage / 100, 1);
         monthPercentageText.textContent = monthPercentage.toFixed(4) + "%";
         monthDaysText.textContent = `剩 ${monthDaysLeft} 天`;
 
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const weekPercentage = (weekElapsedMs / weekTotalMs) * 100;
         const weekDaysLeft = 7 - dayOfWeek;
         
-        weekProgressFill.style.width = Math.min(weekPercentage, 100) + "%";
+        weekProgressFill.value = Math.min(weekPercentage / 100, 1);
         weekPercentageText.textContent = weekPercentage.toFixed(4) + "%";
         weekDaysText.textContent = `剩 ${weekDaysLeft} 天`;
         
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const dayPercentage = (dayElapsedMs / dayTotalMs) * 100;
         const hoursLeft = Math.floor((dayTotalMs - dayElapsedMs) / (1000 * 60 * 60));
         
-        dayProgressFill.style.width = Math.min(dayPercentage, 100) + "%";
+        dayProgressFill.value = Math.min(dayPercentage / 100, 1);
         dayPercentageText.textContent = dayPercentage.toFixed(4) + "%";
         dayHoursText.textContent = `剩 ${hoursLeft} 小时`;
         
