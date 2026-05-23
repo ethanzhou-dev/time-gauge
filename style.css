@@ -149,7 +149,6 @@ body {
     margin: 0;
 }
 
-/* Official md-icon-button is used instead of custom .icon-button styles */
 md-icon-button {
     --md-icon-button-icon-color: var(--md-sys-color-on-surface-variant);
 }
