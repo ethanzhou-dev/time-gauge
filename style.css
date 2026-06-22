@@ -25,10 +25,10 @@
   --md-sys-color-surface-container-high: #ECE6F0;
   --md-sys-color-surface-container-highest: #E6E0E9;
 
-  --md-sys-typescale-display-small: 400 36px/44px 'Roboto', system-ui, sans-serif;
-  --md-sys-typescale-headline-small: 400 24px/32px 'Roboto', system-ui, sans-serif;
-  --md-sys-typescale-body-large: 400 16px/24px 'Roboto', system-ui, sans-serif;
-  --md-sys-typescale-label-medium: 500 12px/16px 'Roboto', system-ui, sans-serif;
+  --md-sys-typescale-display-small: 400 36px/44px 'Roboto', 'Noto Sans SC', system-ui, sans-serif;
+  --md-sys-typescale-headline-small: 400 24px/32px 'Roboto', 'Noto Sans SC', system-ui, sans-serif;
+  --md-sys-typescale-body-large: 400 16px/24px 'Roboto', 'Noto Sans SC', system-ui, sans-serif;
+  --md-sys-typescale-label-medium: 500 12px/16px 'Roboto', 'Noto Sans SC', system-ui, sans-serif;
   
   --md-sys-shape-corner-extra-large: 28px;
   --md-sys-shape-corner-large: 16px;
